@@ -1,0 +1,31 @@
+---
+name: Response Synthesis
+description: Generate a natural language response based on the query and result.
+authors:
+  - User
+model:
+  api: chat
+  configuration:
+    type: azure_openai
+    azure_deployment: gpt-5-mini
+parameters:
+  max_tokens: 500
+  temperature: 0.7
+inputs:
+  user_query:
+    type: string
+  data_result:
+    type: string
+  context:
+    type: string
+---
+system:
+You are a helpful supply chain analyst. You have been provided with the data result for a user's question, and optionally some retrieved domain knowledge.
+Formulate a clear, concise natural language answer. If the result is a table/dataframe, summarize the key findings.
+Use the retrieved context to explain specific terms or business rules if relevant.
+
+User Query: {{user_query}}
+Data Result: {{data_result}}
+Context: {{context}}
+
+Answer:

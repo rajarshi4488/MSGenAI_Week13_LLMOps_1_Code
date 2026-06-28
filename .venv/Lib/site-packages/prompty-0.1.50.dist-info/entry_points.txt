@@ -1,0 +1,5 @@
+[console_scripts]
+prompty = prompty.cli:run
+
+[gui_scripts]
+
